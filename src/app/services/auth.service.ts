@@ -15,7 +15,14 @@ export class AuthService {
 
   constructor(
     private readonly http: HttpClient
-  ) { }
+  ) {
+    const connectedUser = localStorage.getItem('user');
+
+    if (connectedUser) {
+      this.saveConnectedUser(JSON.parse(connectedUser));
+      this.emitCurrentUser();
+    }
+  }
 
   public connect(credentials: Omit<User, 'id'>): Observable<boolean> {
     const API_ENDPOINT = environment.RESSOURCE_USER;
@@ -30,13 +37,18 @@ export class AuthService {
           const valid = users.length !== 0;
 
           if (valid) {
-            this.connectedUser = users[0];
+            this.saveConnectedUser(users[0]);
             this.emitCurrentUser();
           }
 
           return valid;
         })
       );
+  }
+
+  private saveConnectedUser(user: User) {
+    this.connectedUser = user;
+    localStorage.setItem('user', JSON.stringify(this.connectedUser));
   }
 
   private emitCurrentUser(): void {
