@@ -18,7 +18,13 @@
             (click)="askServiceToConnect()">
             Se connecter
         </button>
+
+        <div class="alert alert-danger mt-2" *ngIf="messageError === true">
+            <strong>Identification invalide</strong>
+        </div>
+
+        <div class="alert alert-success mt-2" *ngIf="messageError === false">
+            <strong>Identification valide</strong>
+        </div>
     </form>
 </div>
-
-<code>{{ connectionForm.value | json }}</code>
