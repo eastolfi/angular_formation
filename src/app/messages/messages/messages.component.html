@@ -1,0 +1,7 @@
+<div class="container">
+    <h2>Messages</h2>
+
+    <app-message-list [messages]="messages$ | async"></app-message-list>
+    
+    <app-message-writer (textSend)="requestMessageCreation($event)"></app-message-writer>
+</div>
