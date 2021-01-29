@@ -1,0 +1,10 @@
+{
+    "users": [
+        { "id": 1, "email": "bob@email.com", "password": "bob" },
+        { "id": 2, "email": "brenda@email.com", "password": "brenda" }
+    ],
+    "messages": [
+        { "id": 1, "userId": 1, "text": "Welcome!" },
+        { "id": 2, "userId": 1, "text": "Yaaay" }
+    ]
+}
