@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
   public messageError = null;
 
   constructor(
-    private readonly authService: AuthService
+    private readonly auth: AuthService
   ) {}
 
   ngOnInit(): void {
   }
 
   public askServiceToConnect(): void {
-    this.authService.connect(this.connectionForm.value as User)
+    this.auth.connect(this.connectionForm.value as User)
     .subscribe((connected: boolean) => this.messageError = !connected);
   }
 

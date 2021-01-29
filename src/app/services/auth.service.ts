@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
@@ -10,6 +10,7 @@ import { User } from './interfaces/user';
   providedIn: 'root'
 })
 export class AuthService {
+  public connectedUser$ = new BehaviorSubject(null);
   private connectedUser: User = null;
 
   constructor(
@@ -30,10 +31,15 @@ export class AuthService {
 
           if (valid) {
             this.connectedUser = users[0];
+            this.emitCurrentUser();
           }
 
           return valid;
-      })
+        })
       );
+  }
+
+  private emitCurrentUser(): void {
+    this.connectedUser$.next(this.connectedUser);
   }
 }
