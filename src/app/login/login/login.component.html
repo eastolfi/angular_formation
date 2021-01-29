@@ -1,0 +1,24 @@
+<div class="container-fluid" style="margin-top: 100px;">
+    <form [formGroup]="connectionForm">
+        <input
+            type="text"
+            class="form-control mb-3"
+            placeholder="Email"
+            formControlName="email" />
+        
+        <input
+            type="password"
+            class="form-control mb-3"
+            placeholder="Password"
+            formControlName="password" />
+        
+        <button
+            class="btn btn-primary btn-lg"
+            [disabled]="connectionForm.invalid"
+            (click)="askServiceToConnect()">
+            Se connecter
+        </button>
+    </form>
+</div>
+
+<code>{{ connectionForm.value | json }}</code>

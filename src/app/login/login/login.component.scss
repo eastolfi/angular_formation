@@ -1,0 +1,10 @@
+.form-control {
+    &.ng-touched {
+        &.ng-valid {
+            background-color: lightgreen;
+        }
+        &.ng-invalid {
+            background-color: lightsalmon;
+        }
+    }
+}
