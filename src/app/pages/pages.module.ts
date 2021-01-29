@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginModule } from '../login/login.module';
+import { MessagesModule } from '../messages/messages.module';
 import { PageFooterComponent } from './page-footer/page-footer.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { PageMessagesComponent } from './page-messages/page-messages.component';
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RouterModule,
     LoginModule,
+    MessagesModule,
   ],
   exports: [PageMessagesComponent, PageLoginComponent, PageMentionComponent]
 })
